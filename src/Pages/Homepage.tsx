@@ -29,7 +29,7 @@ const Homepage: React.FC = () => {
     <div className="h-[100vh] w-[100%]  md:bg-[url('/ChatBackground.jpg')] bg-[url('/mobChatBg.avif')] bg-no-repeat bg-center bg-cover">
       <div className="absolute inset-0 bg-black opacity-60 md:opacity-0"></div>
       <div className="md:absolute md:top-5 md:left-5 w:[90%] md:w-[50%] flex flex-col">
-        <div className="h-[60px] w-[100%] md:bg-white flex justify-center items-center rounded">
+        <div className=" h-[60px] w-[100%] md:bg-white flex justify-center items-center rounded">
           <h1 className="text-4xl text-white font-sans text-white md:text-black z-10 ">
             talk-N-express
           </h1>
