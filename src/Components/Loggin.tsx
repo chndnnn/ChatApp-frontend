@@ -18,9 +18,58 @@ const Loggin: React.FC = () => {
   let passwordref: any = useRef();
   let [state, setState] = useState<istate>({ showPass: false });
   let [loading, setloading] = useState(false);
+  let [guestLoading, setGuestLoading] = useState(false);
   let toast = useToast();
   const ShowButtonColor = useBreakpointValue({ base: "white", md: "black" });
 
+   async function onGuestloginClick(){
+    setGuestLoading(true);
+    let data = {
+      email: "guest@gmail.com",
+      password: "123456"
+    };
+    await axios
+      .post(`${baseUrl}/chat/v1/login`, data)
+      .then((res) => {
+        if (res.data.status == "success") {
+          let test = JSON.stringify(res.data);
+          let id = res.data.user._id;
+          localStorage.setItem("userInfo", test);
+          nav(`/chat/${id}`);
+          setloading(false);
+        } else {
+          toast({
+            title: 'Invalid Cred.',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+          })
+          setGuestLoading(false);
+        }
+      })
+      .catch((err) => {
+        if (!data.email || !data.password) {
+          toast({
+            title: 'Invalid Cred.',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+          })
+          setGuestLoading(false);
+        } else {
+          toast({
+            title: 'network issue.',
+            status: 'error',
+            duration: 9000,
+            isClosable: true,
+          })
+          setGuestLoading(false);
+        }
+        console.log(err);
+      });
+
+  }
+  
   async function onloginClick() {
     setloading(true);
     let data = {
@@ -108,6 +157,8 @@ const Loggin: React.FC = () => {
         marginTop={"10px"}
         width={"150px"}
         marginLeft={"4px"}
+        isLoading={guestLoading}
+        onClick={onGuestloginClick}
       >
         Guest user Login
       </Button>
