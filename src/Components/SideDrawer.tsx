@@ -11,12 +11,10 @@ import {
 } from "@chakra-ui/react";
 import { chatState } from "../chatContext/ChatssProvider";
 import { FaChevronDown } from "react-icons/fa";
-import { FaBell } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import ProfileModal from "./ProfileModal";
 import { useNavigate } from "react-router-dom";
 import LeftDrawer from "./LeftDrawer";
-import { displayedUserName } from "../Functions/ChatFunctions";
 import { MdOutlineLightMode } from "react-icons/md";
 import { MdDarkMode } from "react-icons/md";
 import { io, Socket } from "socket.io-client";
@@ -25,7 +23,7 @@ const ENDPOINT = "https://chatapp-backend-1-kwns.onrender.com";
 
 
 const SideDrawer: React.FC = () => {
-  const { users,SetShowResponsive,notification,setNotification ,darkMode,setDarkMode} = chatState();
+  const { users,darkMode,setDarkMode} = chatState();
   let Navigate = useNavigate();
   const socket: Socket = io(ENDPOINT,{
     auth:{
