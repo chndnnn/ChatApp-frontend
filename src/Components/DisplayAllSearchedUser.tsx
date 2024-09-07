@@ -36,7 +36,6 @@ const DisplayAllSearchedUser: React.FC<DisplayAllSearchedUserInterface> = ({
     }
    
     await axios.post(`${baseUrl}/chat/v1/accessChat`,data,{headers}).then((res)=>{
-      console.log(res.data)
       setSelectedChat(res.data)
     })
 
