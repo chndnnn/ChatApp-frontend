@@ -2,15 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import { chatState } from "../chatContext/ChatssProvider";
 import { displayAvatarAtEndMessage, displayedUser } from "../Functions/ChatFunctions";
 import ProfileModal from "./ProfileModal";
-import { Avatar, Box, Input, InputGroup, InputRightElement, Tooltip, useToast, Wrap, WrapItem } from "@chakra-ui/react";
+import { Avatar, Box, Input, InputGroup, InputRightElement, Tooltip, useToast} from "@chakra-ui/react";
 import { IoMdSend } from "react-icons/io";
-import axios, { all } from "axios";
+import axios from "axios";
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { io, Socket } from "socket.io-client";
 import { DefaultEventsMap } from "@socket.io/component-emitter";
 import Lottie from 'react-lottie';
 import typingJson from '../Animation/typing.json'
-import { SiMagisk } from "react-icons/si";
 
 interface DisplayUser{
   _id: any;
@@ -86,7 +85,6 @@ const MyChatBox = () => {
   useEffect(()=>{
     
     socket.on("message received",(newMessageReceived)=>{
-      debugger
       if(!selectedChatCompare || selectedChatCompare._id !== newMessageReceived.chat._id){        
         let data:any = newMessageReceived.chat._id
          setAllNotificationData((prev:any)=>({...prev,[data]:1}))
@@ -99,12 +97,10 @@ const MyChatBox = () => {
 
 useEffect(()=>{
   socket.on('userOnline',(data)=>{
-    console.log('loggedin User --> '+data.name)
     setOnlineUser((prev)=>[...prev,data._id])
   })
   
   socket.on('userOffile',(data)=>{
-    console.log('offline User --> '+data.name)
   setOnlineUser((prev:any)=>{
     return prev.filter((id:any)=>{
       return id != data._id
@@ -125,7 +121,7 @@ useEffect(()=>{
       }
     }
     try{
-      let result = await axios.post(`${baseUrl}/chat/v1/sendNotification`,data,config)
+     await axios.post(`${baseUrl}/chat/v1/sendNotification`,data,config)
     }catch(err){
       console.log(err)
 
@@ -243,7 +239,6 @@ useEffect(()=>{
       var message = await axios.get(`${baseUrl}/chat/v1/fetchMessagepagination/${selectedChat?._id}/?page=${pageNumber}`,config)
         setAllMessages((prev)=>[...message.data.data.message.reverse(),...prev])
         setMaxiPage(message.data.data.maximumPage)
-      //socket.emit("join chat",selectedChat?._id)
       setLoading(false)
       setShowChatLoading(false)
       return message
