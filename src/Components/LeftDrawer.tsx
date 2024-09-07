@@ -12,7 +12,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import axios from "axios";
-import React, { memo, ReactNode, useEffect, useState } from "react";
+import React, {ReactNode, useEffect, useState } from "react";
 import { chatState } from "../chatContext/ChatssProvider";
 import DisplayAllSearchedUser from "./DisplayAllSearchedUser";
 import { Skeleton } from "@chakra-ui/react";
@@ -53,7 +53,6 @@ const LeftDrawer: React.FC<LeftDrawerProps> = ({ children }) => {
         setSearchedUserlist(res.data.getAlluser);
         setLoading(false);
       }).catch(()=>{
-        console.log("error")
         toast.error("Invalid credentials",{
           containerId:"leftDrawer",
           autoClose: 2000,
