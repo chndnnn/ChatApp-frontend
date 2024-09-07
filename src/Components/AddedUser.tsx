@@ -1,6 +1,6 @@
 import {  Button } from "@chakra-ui/react";
 import React from "react";
-import { FC, ReactNode } from "react";
+import { ReactNode } from "react";
 import { MdOutlineCancel } from "react-icons/md";
 interface AddedUserInterface {
     children : ReactNode
