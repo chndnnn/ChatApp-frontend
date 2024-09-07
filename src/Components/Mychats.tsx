@@ -13,7 +13,7 @@ const Mychats = () => {
 
 
   let { users , setChat,chat,selectedChat,setSelectedChat,showResponsive,SetShowResponsive,allNotificationData,setAllNotificationData,darkMode} = chatState()
-  let [sideloading,setSideLoading] = useState(false)
+  let [sideloading] = useState(false)
 
   useEffect(() => {
     fetchChats(); 
