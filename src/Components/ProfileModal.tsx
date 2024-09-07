@@ -239,7 +239,6 @@ const ProfileModal: React.FC<profileModalProps> = ({ children, users }) => {
   function onImageEditClick(){
     if(fileInputRef.current){
       fileInputRef.current.click();
-      console.log(fileInputRef.current)
     }
   }
 
