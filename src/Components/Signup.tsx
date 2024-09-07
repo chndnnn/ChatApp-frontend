@@ -31,7 +31,6 @@ const Signup: React.FC<iProp> = ({ onToggle }) => {
   const [imgurl, setimgurl] = useState();
   let [loading, setLoading] = useState(false);
   let [showImage, setShowImage] = useState(false);
-  console.log(showImage);
   function onSigUpClick() {
     let data = {
       name: name.current.value,
@@ -48,15 +47,12 @@ const Signup: React.FC<iProp> = ({ onToggle }) => {
     axios
       .post(`${baseUrl}/chat/v1/signup`, data)
       .then((res: any) => {
-        console.log(res);
         if (res.data.status === "success") {
-          console.log("hii2");
           toast.success("Signup Successfull!!", {
             containerId: "B",
           });
           onToggle();
         } else {
-          console.log("hii");
           toast.error(res.response.data.message, {
             containerId: "B",
           });
