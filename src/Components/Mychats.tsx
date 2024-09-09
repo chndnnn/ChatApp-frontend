@@ -73,7 +73,7 @@ const Mychats = () => {
     <Box className={`mt-1 w-[100%] md:w-[28%] h-[90vh] ${!darkMode?'bg-slate-200 ':'bg-slate-600 text-gray-50'} ${showResponsive?"hidden md:flow-root":''}`}>
       <div className="w-[100%] h-[10%] flex justify-between items-center p-2">
         <h2 className="text-2xl">My Chats</h2>
-        <GroupChatModal> <Button colorScheme={`${!darkMode?'gray':'blackAlpha'}`} className={`w-[150px]`} rightIcon={<IoMdAdd className="text-2xl " />}>New Group Chat </Button></GroupChatModal>
+        <GroupChatModal> <Button colorScheme={`${!darkMode?'gray':'blackAlpha'}`}  rightIcon={<IoMdAdd className="text-2xl " />}>New Group Chat </Button></GroupChatModal>
       </div>
       {
                     sideloading && <div className="flex ">
