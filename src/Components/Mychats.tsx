@@ -73,17 +73,17 @@ const Mychats = () => {
     <Box className={`mt-1 w-[100%] md:w-[28%] h-[90vh] ${!darkMode?'bg-slate-200 ':'bg-slate-600 text-gray-50'} ${showResponsive?"hidden md:flow-root":''}`}>
       <div className="w-[100%] h-[10%] flex justify-between items-center p-2">
         <h2 className="text-2xl">My Chats</h2>
-        <GroupChatModal> <Button colorScheme={`${!darkMode?'gray':'blackAlpha'}`}  rightIcon={<IoMdAdd className="text-2xl " />}>New Group Chat </Button></GroupChatModal>
+        <GroupChatModal> <Button colorScheme={`${!darkMode?'gray':'blackAlpha'}`} className={`w-[160px]`}  rightIcon={<IoMdAdd className="text-2xl " />}>New Group Chat </Button></GroupChatModal>
       </div>
       {
                     sideloading && <div className="flex ">
                       <div className="animate-spin rounded-full h-8 w-8 border-t-4 border-blue-500"></div>
                     </div>
           }
-    
+      <div className=" h-[89%] overflow-y-scroll">
       {chat?.map((chat: any,index:any) => {
         return (
-            <Box key={index} onClick={()=>onMyChatClick(chat)} className={`overflow-y-scroll h-[50px] w-[95%] ml-2 mt-1 cursor-pointer hover:bg-slate-400 hover:text-black pl-2 pr-2 rounded ${selectedChat?._id == chat._id?'bg-teal-200 border border-solid text-black':!darkMode?'bg-slate-300 ':'bg-slate-500 text-white'}} `}>
+            <Box key={index} onClick={()=>onMyChatClick(chat)} className={` h-[50px] w-[95%] ml-2 mt-1 cursor-pointer hover:bg-slate-400 hover:text-black pl-2 pr-2 rounded ${selectedChat?._id == chat._id?'bg-teal-200 border border-solid text-black':!darkMode?'bg-slate-300 ':'bg-slate-500 text-white'}} `}>
             <span >
             {chat.chatName == "sender"
               ? displayedUserName(users?.user?.name, chat.users)
@@ -104,6 +104,7 @@ const Mychats = () => {
           </Box>
         );
       })}
+        </div>
       <ToastContainer />
     </Box>
   );
