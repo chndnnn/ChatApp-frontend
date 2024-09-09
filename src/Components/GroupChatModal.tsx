@@ -140,7 +140,7 @@ const GroupChatModal:React.FC<groupChatInterface> = ({children})=>{
    
   return (
     <>
-      <Button colorScheme={`${!darkMode?'gray':'blackAlpha'}`} onClick={onOpen}>{children}</Button>
+      <span onClick={onOpen}>{children}</span>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
