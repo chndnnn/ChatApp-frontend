@@ -83,7 +83,7 @@ const Mychats = () => {
     
       {chat?.map((chat: any,index:any) => {
         return (
-            <Box key={index} onClick={()=>onMyChatClick(chat)} className={` h-[50px] w-[95%] ml-2 mt-1 cursor-pointer hover:bg-slate-400 hover:text-black pl-2 pr-2 rounded ${selectedChat?._id == chat._id?'bg-teal-200 border border-solid text-black':!darkMode?'bg-slate-300 ':'bg-slate-500 text-white'}} `}>
+            <Box key={index} onClick={()=>onMyChatClick(chat)} className={`overflow-y-scroll h-[50px] w-[95%] ml-2 mt-1 cursor-pointer hover:bg-slate-400 hover:text-black pl-2 pr-2 rounded ${selectedChat?._id == chat._id?'bg-teal-200 border border-solid text-black':!darkMode?'bg-slate-300 ':'bg-slate-500 text-white'}} `}>
             <span >
             {chat.chatName == "sender"
               ? displayedUserName(users?.user?.name, chat.users)
