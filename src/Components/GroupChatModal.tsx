@@ -86,7 +86,7 @@ const GroupChatModal:React.FC<groupChatInterface> = ({children})=>{
     }
 
     function onSubmitClick(){
-        if(groupChatName === "" || groupChatName==null ){
+    if(groupChatName === "" || groupChatName==null ){
             toast({
                 title: 'Please enter chat name',
                 status: 'error',
@@ -94,9 +94,18 @@ const GroupChatModal:React.FC<groupChatInterface> = ({children})=>{
                 isClosable: true,
               })
               return
+        }else if(addedusertoGroup.length<2){
+          toast({
+            title: 'Please add at least two user to group',
+            status: 'error',
+            duration: 4000,
+            isClosable: true,
+          })
+          return
+        }else{
+          createGroupChat()
         }
     
-            createGroupChat()
     }
 
     const createGroupChat = async()=>{
