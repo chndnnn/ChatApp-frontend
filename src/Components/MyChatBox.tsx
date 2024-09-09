@@ -342,7 +342,7 @@ function onInputChange(e:any){
               })}
                <div ref={messagesEndRef} />
             </Box>
-            {isTyping?<div className="flex ml-10 w-[30px] ml-[0px]"><Lottie options={defaultOptions}
+            {isTyping?<div className="flex ml-10 w-[30px] ml-[0px] rounded"><Lottie options={defaultOptions}
               height={20}
               width={20}></Lottie></div>:<></>}
             <Box className="w-[100%] h-[10%] flex items-center justify-between p-2">
