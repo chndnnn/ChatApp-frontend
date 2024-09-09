@@ -32,7 +32,7 @@ const GroupChatModal:React.FC<groupChatInterface> = ({children})=>{
     let [groupChatName,setGroupChatName] = useState();
     let [addedusertoGroup,setAddedUserToGroup] = useState<any[]>([]);
     let colorArr = ["green", "pink","blue" ,"cyan", "purple","teal"]
-    let {users,setChat,darkMode} = chatState();
+    let {users,setChat} = chatState();
     const toast = useToast()
     const { isOpen, onOpen, onClose } = useDisclosure()
     let nav = useNavigate();
